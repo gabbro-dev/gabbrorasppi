@@ -6,7 +6,7 @@ from classes.led import Led
 from classes.uart import UART
 
 # Create objects
-led = Led(2)
+led = Led(17)
 uart = UART(9600, "/dev/ttyV0")
 
 try:
