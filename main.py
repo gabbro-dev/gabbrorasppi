@@ -15,7 +15,6 @@ try:
     while True:
         command = uart.readComm()
         if command:
-            print("Command recieved:", command)
             command = command.upper()
 
             # Led Commands
@@ -27,12 +26,25 @@ try:
                 led.blink()
             # Oled Display
             elif command == "SHOW":
+                print("Showing text in Oled")
                 oled.displayText("Hello world!")
             elif command == "CLEAR":
+                print("Oled cleared")
                 oled.clear()
+            elif command == "DISPLAY":
+                print("Input the text to display")
+                while True:
+                    command = uart.readComm()
+                    if command:
+                        if command.upper() == "X":
+                            break
+                        else:
+                            oled.displayText(command)
+                            print("Text displayed:", command)
+                            break
             # Not a command
             else:
-                print("Command not recognized")
+                print("Command not recognized:", command)
 
 except KeyboardInterrupt:
     print("End of the program")
