@@ -5,7 +5,7 @@ from adafruit_ssd1306 import SSD1306_I2C
 from PIL import Image, ImageDraw, ImageFont
 
 class oled:
-    def __init__(self, width = 128, height = 64, address = 0x3c):
+    def __init__(self, width = 128, height = 32, address = 0x3c):
         # Init i2C
         self.i2c = busio.I2C(board.SCL, board.SDA)
         self.oled = SSD1306_I2C(width, height, self.i2c, addr=address)
